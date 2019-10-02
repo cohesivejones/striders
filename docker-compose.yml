@@ -13,8 +13,8 @@ services:
     environment:
       BAMBOO_SUBDOMAIN: stridenyc
       BAMBOO_API_KEY: API_KEY_GOES_HERE
-    expose:
-      - 4000
+    ports:
+      - 4000:4000
     networks:
       - default
 networks:
