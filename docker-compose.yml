@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+  tree:
+    build:
+      context: tree/.
+    ports:
+      - 80:4000
+    networks:
+      - default
+  bamboo:
+    build:
+      context: bamboo/.
+    environment:
+      BAMBOO_SUBDOMAIN: stridenyc
+      BAMBOO_API_KEY: API_KEY_GOES_HERE
+    expose:
+      - 4000
+    networks:
+      - default
+networks:
+  default:
+    driver: bridge
