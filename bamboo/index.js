@@ -23,7 +23,7 @@ const getBambooStaff = () => axios.get(
   { headers: { 'Accept': 'application/json' } }
 );
 
-const transform = ({employees}) => employees.map(({id, firstName, lastName}) => ({id, firstName, lastName}))
+const transform = ({employees}) => employees.map(({id, firstName, lastName, jobTitle}) => ({id, firstName, lastName, jobTitle}))
 
 app.get('/people', (req, res, next) => {
   getBambooStaff().then((staff) => {

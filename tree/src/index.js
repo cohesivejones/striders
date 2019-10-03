@@ -30,8 +30,8 @@ const mergeById = (a, b) => {
   }))
 }
 
-const toNodeData = ({firstName, lastName, id, parentId}) => ({
-  id, parentId, title: `${firstName} ${lastName}`, expanded: true
+const toNodeData = ({firstName, lastName, id, parentId, jobTitle}) => ({
+  id, parentId, title: `${firstName} ${lastName}`, subtitle: jobTitle, expanded: true
 })
 
 const listToTree = (data) => {
