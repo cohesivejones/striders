@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import SortableTree from "react-sortable-tree";
 import axios from 'axios';
+import _ from 'lodash';
 import './styles.css';
 import 'react-sortable-tree/style.css';
 
@@ -58,7 +59,11 @@ const Employees = () => {
   const getData = () => {
     return new Promise((resolve, reject) => {
       axios.all([ getStriders(), getSponsers() ]).then(axios.spread((striders, sponsers) => {
-        const data = mergeById(striders.data, sponsers.data).map(toNodeData);
+        const data = _.orderBy(
+          mergeById(striders.data, sponsers.data).map(toNodeData),
+          ['title'],
+          ['asc']
+        );
         resolve(listToTree(data));
       })
       ).catch(reject)
