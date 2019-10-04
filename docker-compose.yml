@@ -32,6 +32,12 @@ services:
     image: mongo:latest
     networks:
       - default
+  seed:
+    build: ./seed
+    depends_on:
+      - sponsers_db
+    networks:
+      - default
 networks:
   default:
     driver: bridge
