@@ -8,6 +8,9 @@ import 'react-sortable-tree/style.css';
 
 const getStriders = () => axios.get(`http://localhost:4000/people`)
 const getSponsers = () => axios.get(`http://localhost:4001/sponsers`)
+const deleteSponser = (sponseeId) => axios.delete(`http://localhost:4001/sponsers/${sponseeId}/delete`);
+const createSponser = (sponseeId, sponserId) => axios.post('http://localhost:4001/sponsers/create', { id: sponseeId, parentId: sponserId });
+
 const onMoveNode = ({
   treeData,
   node,
@@ -18,13 +21,11 @@ const onMoveNode = ({
   nextTreeIndex
 }) => {
   if (node.parentId) {
-    axios.delete(`http://localhost:4001/sponsers/${node.id}/delete`);
+    deleteSponser(node.id)
   }
-  axios.post('http://localhost:4001/sponsers/create', {
-    id: node.id,
-    parentId: nextParentNode.id
-  });
+  createSponser(node.id, nextParentNode.id)
 };
+
 const mergeById = (a, b) => {
   return a.map((itm) => ({
     ...b.find(item => item && (item.id === itm.id)), ...itm
