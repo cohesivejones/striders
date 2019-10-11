@@ -14,6 +14,7 @@ COPY src/ src/
 COPY server/ server/
 COPY .babelrc .
 COPY webpack.config.js .
+COPY tsconfig.json .
 
 EXPOSE 4000
 
