@@ -36,11 +36,10 @@ const toNodeData = ({firstName, lastName, id, parentId, jobTitle}) => ({
   id, parentId, title: `${firstName} ${lastName}`, subtitle: jobTitle, expanded: true
 })
 
-const listToTree = (data) => {
+const listToTree = (data = []) => {
   let tree = [], childrenOf = {};
   let item, id, parentId;
-  for (let i = 0, length = data.length; i < length; i++) {
-    item = data[i];
+  data.forEach((item) => {
     id = item.id;
     parentId = item.parentId || 0;
     childrenOf[id] = childrenOf[id] || [];
@@ -51,7 +50,7 @@ const listToTree = (data) => {
     } else {
       tree.push(item);
     }
-  };
+  });
   return tree;
 }
 
