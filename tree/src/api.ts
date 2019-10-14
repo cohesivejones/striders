@@ -3,13 +3,13 @@ import * as axios from 'axios';
 interface Response<T> {
   data: T
 }
-interface Person {
+export interface Person {
   id: string
   firstName: string
   lastName: string
   jobTitle: string
 }
-interface Sponser {
+export interface Sponser {
   id: string
   parentId: string
 }

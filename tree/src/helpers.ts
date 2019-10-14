@@ -1,3 +1,5 @@
+import { Person, Sponser } from './api'
+
 interface TreeObject {
   id: string
   parentId: string
@@ -9,7 +11,7 @@ export const mergeById = (a: ObjectWithId[], b: ObjectWithId[]) => {
     ...b.find(item => item && (item.id === itm.id)), ...itm
   }))
 }
-export const toNodeData = ({firstName, lastName, id, parentId, jobTitle}: {firstName: string, lastName: string, id: string, parentId: string, jobTitle: string}) => ({
+export const toNodeData = ({firstName, lastName, id, parentId, jobTitle}: Pick<Person & Sponser, 'firstName' | 'lastName' | 'id' | 'jobTitle' | 'parentId'>) => ({
   id, parentId, title: `${firstName} ${lastName}`, subtitle: jobTitle, expanded: true
 })
 export const listToTree = (data: TreeObject[] = []) => {
