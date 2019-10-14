@@ -15,21 +15,19 @@ export const toNodeData = ({firstName, lastName, id, parentId, jobTitle}: Pick<P
   id, parentId, title: `${firstName} ${lastName}`, subtitle: jobTitle, expanded: true
 })
 export const listToTree = (data: TreeObject[] = []) => {
-  let tree: TreeObject[] = []
   let childrenOf: Record<string, TreeObject[]> = {};
-  data.forEach((item: TreeObject) => {
+  return data.reduce((tree: TreeObject[], item: TreeObject) => {
     const id = item.id;
     const parentId = item.parentId;
     childrenOf[id] = childrenOf[id] || [];
-    item.children = childrenOf[id];
     if (parentId) {
       childrenOf[parentId] = childrenOf[parentId] || [];
-      childrenOf[parentId].push(item);
+      childrenOf[parentId].push({...item, children: childrenOf[id]});
     } else {
-      tree.push(item);
+      tree = [...tree, {...item, children: childrenOf[id]}]
     }
-  });
-  return tree;
+    return tree;
+  }, []);
 }
 export function spread<T, R>(callback: (...args: T[]) => R): (array: T[]) => R {
   return function wrap(arr) {
