@@ -1,13 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const routes = require('./routes');
-require('./config/mongo');
+import express, { Request } from 'express';
+import bodyParser from 'body-parser';
+import routes from './routes'
+import './config/mongo';
 
 const APP_PORT = 4000;
 const APP_NAME = "SPONSERS"
 
 const app = express();
-app.use(function(req, res, next) {
+app.use(function(_req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

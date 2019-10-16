@@ -1,13 +1,13 @@
-const Sponser = require('../models');
+import { Request, Response, NextFunction } from 'express';
+import Sponser, { ISponser } from '../models';
 
-exports.all = function (req, res, next) {
-  Sponser.find({}, function (err, sponsers) {
+export function all(_req: Request, res:  Response, next: NextFunction) {
+  Sponser.find({}, function (err: Error, sponsers: ISponser[]) {
     if (err) return next(err);
     res.send(sponsers);
   })
 };
-
-exports.create = async function (req, res, next) {
+export async function create(req: Request, res: Response, next: NextFunction) {
   try {
     const {id, parentId} = req.body
     let sponser = new Sponser({id, parentId});
@@ -18,8 +18,7 @@ exports.create = async function (req, res, next) {
     next(err);
   }
 };
-
-exports.delete = async function (req, res, next) {
+export async function remove(req: Request, res: Response, next: NextFunction) {
     try {
       const id = req.params.id;
       await Sponser.remove({id})
