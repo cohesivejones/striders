@@ -10,12 +10,8 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY index.js .
-COPY controllers controllers/
-COPY routes routes/
-COPY models models/
-COPY config config/
+COPY src src/
 
 EXPOSE 4000
 
-CMD [ "node", "index.js" ]
+CMD [ "node", "src/index.js" ]
