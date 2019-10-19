@@ -17,25 +17,25 @@ services:
       - 4000:4000
     networks:
       - default
-  sponsers:
+  sponsors:
     build:
-      context: sponsers/.
+      context: sponsors/.
     environment:
-      DB: mongodb://sponsers_db/app
+      DB: mongodb://sponsors_db/app
     ports:
       - 4001:4000
     depends_on:
-      - sponsers_db
+      - sponsors_db
     networks:
       - default
-  sponsers_db:
+  sponsors_db:
     image: mongo:latest
     networks:
       - default
   seed:
     build: ./seed
     depends_on:
-      - sponsers_db
+      - sponsors_db
     networks:
       - default
 networks:

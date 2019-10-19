@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as ReactDOM from 'react-dom';
-import { createSponser, deleteSponser, getStriders, getSponsers } from './api'
+import { createSponsor, deleteSponsor, getStriders, getSponsors } from './api'
 import { spread, toNodeData, mergeById, listToTree } from './helpers'
 import SortableTree, { TreeItem } from "react-sortable-tree";
 import _ from 'lodash';
@@ -17,18 +17,18 @@ function onMoveNode({ treeData, node, nextParentNode, prevPath, prevTreeIndex, n
   nextTreeIndex: number
 }): void {
   if (node.parentId) {
-    deleteSponser(node.id)
+    deleteSponsor(node.id)
   }
-  createSponser(node.id, nextParentNode.id)
+  createSponsor(node.id, nextParentNode.id)
 };
 
 const Employees = () => {
   const [treeData, setTreeData] = useState([]);
   const getData = (): Promise<TreeItem[]> => {
     return new Promise((resolve, reject) => {
-      Promise.all([ getStriders(), getSponsers() ]).then(spread((striders, sponsers) => {
+      Promise.all([ getStriders(), getSponsors() ]).then(spread((striders, sponsors) => {
         const data = _.orderBy(
-          mergeById(striders.data, sponsers.data).map(toNodeData),
+          mergeById(striders.data, sponsors.data).map(toNodeData),
           ['title'],
           ['asc']
         );

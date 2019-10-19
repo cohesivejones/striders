@@ -1,12 +1,12 @@
 import { model, Schema, Document } from 'mongoose';
 
-export interface ISponser extends Document {
+export interface ISponsor extends Document {
     id: string
     parentId: string
 }
-const SponserSchema = new Schema({
+const SponsorSchema = new Schema({
     id: {type: String, required: true},
     parentId: {type: String, required: true},
 });
 
-export default model<ISponser>('Sponser', SponserSchema);
+export default model<ISponsor>('Sponsor', SponsorSchema);

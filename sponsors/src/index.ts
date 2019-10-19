@@ -4,7 +4,7 @@ import routes from './routes'
 import './config/mongo';
 
 const APP_PORT = 4000;
-const APP_NAME = "SPONSERS"
+const APP_NAME = "SPONSORS"
 
 const app = express();
 app.use(function(_req, res, next) {
@@ -15,6 +15,6 @@ app.use(function(_req, res, next) {
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use('/sponsers', routes());
+app.use('/sponsors', routes());
 
 app.listen(APP_PORT, () => console.log(`${APP_NAME} listening on port ${APP_PORT}!`));

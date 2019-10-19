@@ -11,22 +11,22 @@ export interface Person {
   lastName: string
   jobTitle: string
 }
-export interface Sponser {
+export interface Sponsor {
   id: string
   parentId: string
 }
 export const getStriders = (): AsyncResponse<Person[]> => axios.request({
   method: 'get', url: 'http://localhost:4000/people'
 });
-export const getSponsers = (): AsyncResponse<Sponser[]> => axios.request({
-  method: 'get', url: 'http://localhost:4001/sponsers'
+export const getSponsors = (): AsyncResponse<Sponsor[]> => axios.request({
+  method: 'get', url: 'http://localhost:4001/sponsors'
 });
-export const deleteSponser = (sponseeId: string): AsyncResponse<null> => axios.request({
+export const deleteSponsor = (sponseeId: string): AsyncResponse<null> => axios.request({
   method: 'delete', 
-  url: `http://localhost:4001/sponsers/${sponseeId}/delete`
+  url: `http://localhost:4001/sponsors/${sponseeId}/delete`
 });
-export const createSponser = (sponseeId: string, sponserId: string): AsyncResponse<Sponser> => axios.request({
+export const createSponsor = (sponseeId: string, sponsorId: string): AsyncResponse<Sponsor> => axios.request({
   method: 'post',
-  url: 'http://localhost:4001/sponsers/create', 
-  data: { id: sponseeId, parentId: sponserId }
+  url: 'http://localhost:4001/sponsors/create', 
+  data: { id: sponseeId, parentId: sponsorId }
 });

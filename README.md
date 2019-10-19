@@ -1,9 +1,9 @@
 # striders
 ## purpose
-display stride sponsee/sponser information using drag and drop tree component.
+display stride sponsee/sponsor information using drag and drop tree component.
 build application using following microservices 
 - bambo integration creating ACL for future implementations
-- sponser service for storing sponser/sponsee association data
+- sponsor service for storing sponsor/sponsee association data
 
 ## setup instructions
 1. Install docker
@@ -13,6 +13,6 @@ build application using following microservices
 ## using the app
 navigate to http://localhost to tree representation of data.
 
-navigate to http://localhost:4001/sponsers to see sponser data
+navigate to http://localhost:4001/sponsors to see sponsor data
 
 navigate to http://localhost:4000/people to see employee data
